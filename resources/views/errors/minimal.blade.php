@@ -17,7 +17,6 @@
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 100;
-                height: 100vh;
                 margin: 0;
             }
 
@@ -37,22 +36,25 @@
 
             .code {
                 border-right: 2px solid;
-                font-size: 26px;
+                font-size: 35px;
                 padding: 0 15px 0 15px;
                 text-align: center;
             }
 
             .message {
-                font-size: 18px;
+                font-size: 35px;
                 text-align: center;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height h-screen">
+
             <div class="code">
                 @yield('code')
             </div>
+
+            @yield('imagen')
 
             <div class="message" style="padding: 10px;">
                 @yield('message')

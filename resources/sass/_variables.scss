@@ -5,8 +5,12 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+$enable-gradients: true; //para habilitar gradientes en botones
+$enable-responsive-font-sizes: true; //para hacer que las fuentes sean responsivas
 
 // Colors
+$primary: black; //para establecer el color primario de la aplicacion
+$secondary: #474747;
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;

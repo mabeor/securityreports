@@ -1,71 +1,35 @@
- <script type="text/javascript">
-	function agregarlinea(n){
-		//duplicando la linea de la tabla
-		var tr = n.parentNode.parentNode.cloneNode(true);
-    	document.getElementById('eventos').appendChild(tr);
-	}
-
-	function borrarlinea() {
-		// event.target will be the input element.
-		var td = event.target.parentNode;
-		var tr = td.parentNode; // the row to be removed
-		tr.parentNode.removeChild(tr);
-	}
-
-	function Validacion_de_Selects(){
-		{{-- Estos scripts permiten que se le diga al usuario que tiene que llenar estos campos sin que se refresque el sitio y no pierda asi los datos ya ingresados--}}
-
-		//se valida cada select de los edificios de cada linea con base en los indice del arreglo
-		var Edificio = document.getElementsByName('Edificio[]');
-		for (i=0; i < Edificio.length; i++){
-			if (Edificio[i].value == "seleccione el edificio"){
-			 	 alert('Seleccione un edificio');
-			 	 return false;
-			}
-		}
-
-		//se valida cada select de las cuentas de cada linea con base en los indice del arreglo
-		var Cuenta = document.getElementsByName('Cuenta[]');
-		for (j=0; j < Cuenta.length; j++){
-			if (Cuenta[j].value == "seleccione la cuenta"){
-			 	 alert('Seleccione una cuenta');
-			 	 return false;
-			}
-		}
-    }
- </script>
+<script src='js/agregarBorrarLineas.js' defer></script>
 
 @extends('layout')
 
 @section('title','Crear cierres de cuenta')
 
 @section('content')
-	<h1>Crear cierres de cuenta</h1>
-	<hr>
 
-	@include('partials.validation-errors') {{-- mostrando los mensajes de error de validacion--}}
-
-	{{-- mostrando el mensaje flash de confirmacion de la insercion de los datos en la BD --}}
-	@if(session('status'))
-		{{ session('status') }}
-	@endif
-
-	<form method="POST" action="{{ route('cierres.store') }}" onSubmit="return Validacion_de_Selects();">
-		@csrf
-		<table id="eventos">
-			<thead>
-				<tr>
-					<th>Edificio</th>
-		   			<th>Cuenta</th>
-		   			<th>Hora cierre</th>
-		   			<th></th>
-		   			<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				@include('aperturas-cierres._tablerow')
-			</tbody>
-		</table>
-		<button>Guardar</button>
-	</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-8 mx-auto">
+				<h2>Crear cierres de cuenta</h2>
+				<hr>
+				<form method="POST" action="{{ route('cierres.store') }}">
+					@csrf
+					<table id="eventos" class="table text-center rounded">
+						<thead class="thead-dark">
+							<tr>
+								<th>Edificio</th>
+					   			<th>Cuenta</th>
+					   			<th>Fecha - Hora cierre</th>
+					   			<th></th>
+					   			<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@include('aperturas-cierres._tablerow')
+						</tbody>
+					</table>
+					<button class="btn btn-primary btn-md btn-guardar">Guardar</button>
+				</form>
+			</div>
+		</div>
+	</div>
 @endsection

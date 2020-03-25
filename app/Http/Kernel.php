@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
         'AccesoAdministrador' => \App\Http\Middleware\RolAdministrador::class,
         'AccesoCoordinador' => \App\Http\Middleware\RolCoordinador::class,
         'AccesoSupervisor' => \App\Http\Middleware\RolSupervisor::class,
+        'AccesoTodos' => \App\Http\Middleware\RolTodos::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,

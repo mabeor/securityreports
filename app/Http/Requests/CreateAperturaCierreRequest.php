@@ -26,7 +26,16 @@ class CreateAperturaCierreRequest extends FormRequest
         return [
             'Edificio' => 'required',
             'Cuenta' => 'required',
-            'Hora' => 'required',
+            'Hora.*' => 'required|date',
         ];
+    }
+
+     public function messages(){
+        return [
+            'Edificio.required' => 'El campo "Edificio" es requerido.',
+            'Cuenta.required' => 'El campo "Cuenta" es requerido.',
+            'Hora*.required' => 'El campo "Hora apertura" es requerido.',
+            'Hora*.date_format' => 'El campo "Hora apertura" debe tener el formato hh:mm.',
+            ];
     }
 }
