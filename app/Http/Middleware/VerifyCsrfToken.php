@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        // 'login' //para exlcuir la verificacion del token crf del formulario de login y que la sesion no expire al estar en esta URI. Esto no es aconsejable por seguridad
     ];
 }

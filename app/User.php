@@ -5,11 +5,20 @@ use App\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity; //agregado para que funcione el log activity
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, LogsActivity;
 
+    protected static $logAttributes = ['name']; //atributos a guardar en el activity log
+    protected static $recordEvents = ['created','updated'];
+    protected static $logName = 'Usuario'; //nombre del tipo de log (campo log_name de la base de datos)
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "A new user has been {$eventName}";
+    }
     /**
      * The attributes that are mass assignable.
      *

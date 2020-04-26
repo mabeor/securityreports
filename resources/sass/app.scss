@@ -1,8 +1,190 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); //fuente para todo excepto logo
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); //fuente para logo
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// ******** INICIO DE CSS PROPIO ***********************
+body{ //sobreescribiendo el tipo de letra a partir del primer import de arriba
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.h-screen{ //clase para que se ocupe el alto de la pantalla
+	height: 100vh;
+}
+
+.navbar-nav li:hover > ul.dropdown-menu { //sin esto no salen los submenus
+    display: block;
+    border-radius: none;
+}
+
+.navbar {
+    font-size: medium; //estableciendo el tamano de la fuente de las opciones principales del navbar
+}
+
+.dropdown-submenu {
+    position:relative; //para que el fondo de un menu sea del tamano del texto
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%; //para que los submenus aparezcan justo a la derecha del menu que provienen
+    margin-top:-8px; //altura de los subniveles
+}
+
+.dropdown-menu > li > a{
+    padding: 10px 30px 10px 20px; //para que cada submenu sea mas grande
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: overline;
+    transform: rotate(-90deg); //para que rote la flechita de los submenus
+}
+
+.dropdown-menu > li > a:hover { //para cambiar el fondo y color de letra al poner el mouse en los elementos de cada menu
+    background: $secondary;
+    color: white;
+}
+
+ul.navbar-nav .nav-item:after { //para efecto de linea bajo menu item de la navbar
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    transition: width .5s ease, background-color .5s ease;
+}
+.navbar-nav .nav-item:hover:after { //para efecto de linea bajo menu item de la navbar
+    width: 100%;
+    background: white;
+}
+
+table { //para darle borde redondeado a las tablas
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+/***** Para ajustar los labels y campos de los formularios de busqueda en el centro de la pagina ***/
+.inner{
+    display:inline-block; //para mostrar ambos divs uno a la par del otro
+    padding: 5px; //para que no se muestren los divs tan cerca uno del otro
+    font-size: large; //tamano de la letra de ambos divs
+}
+.inner > select {
+    height: 30px; //altura de los select
+    width: 275px; //ancho de los select
+    margin-bottom: 5px; //margen de abajo de los select
+    text-align-last: center; //alinear el texto de los select en el centro
+}
+.inner > input {
+    height: 30px; //altura de los inputs (fechas)
+    width: 275px; //andcho de los inputs
+    margin-bottom: 5px; //margin de abajo de los inputs (igual que el de los select)
+    padding-left: 45px; //para que el texto de los input se alinea con el texto de los select
+}
+/************************************************************/
+
+select, input {
+    text-align: center; //para alinear el cursos en el centro de los input (como en el form de login)
+    text-align-last: center; //alinear el texto de los select e inputs de todo el sitio en el centro
+ }
+
+//******* Para alinear divs de imagen y formulario de login
+.alinear1{  //div de la imagen
+    top: 75px; //margen superior de la imagen
+    text-align: center; //alineando la imagen en el centro
+}
+.alinear2{ //div del formulario
+    top: 100px; //margen superior del formulario
+}
+//*************
+
+.boton-novedades{ //ancho de botones de agregar y borrar linea de formulario de novedades
+    width: 120px;
+}
+
+.btn-guardar{ //para centrar los botones de guardar
+    margin:0 auto;
+    display:block;
+    width: 200px;
+    height: 40px;
+    background-color: $secondary;
+}
+
+#btn-loguin{ //ancho del boton de loguin
+    width: 150px;
+}
+
+.navbar-dark .navbar-nav .nav-link { //sobreescribiendo el color de las opciones de menu de la navbar
+    color: white;
+    padding-left: 30px; //para separar cada opcion del menu entre si
+}
+
+.navbar-dark .navbar-brand { //sobreescribiendo el tamano del brand de la navbar
+    font-size: larger;
+}
+
+h1, h2 { //alineando todos los titulos h1 y h2 del body en el centro y el texto de los mensajes flash
+    text-align: center;
+}
+
+.form-control-sm{ //sobreescribiendo el tamano de letra de la clase form-control-sm de bootstrap
+    font-size: medium;
+}
+
+.table .thead-dark th{ //sobreescribiendo el color del header de las tablas de bootstrap
+    background-color: $primary;
+    border-color: $primary;
+}
+
+.bg-dark { //sobreescribiendo el color del navbar bg-dark de bootstrap
+    background-color: $primary !important;
+}
+
+.card-header{ //sobreescribiendo el header de los formularios de bootstrap
+    background-color: $primary;
+    color: white;
+}
+
+.navbar-dark .navbar-brand { //estableciendo el tipo de fuente del logo
+    font-family: 'Audiowide', sans-serif ;
+    font-size: larger;
+}
+
+#navbarNavDropdown{
+    padding-left: 30px; //para separar las opciones del menu del navbar del logo
+}
+
+.container { //sobreescribiendo la clase container de bootstrap para que ocupe el 100% de la pantalla
+    max-width: 100%;
+}
+
+#btn-prestamos-agregar, #btn-prestamos-borrar{ //definiendo el tamano de los botones + y - para agregar lineas en el formulario de creacion de prestamos de gafetes
+    height: 30px;
+    width: 30px;
+}
+
+//**** Ajustes mensajes flash
+.mensaje-flash{
+    display: inline-block; //para que cubra el ancho de toda la pantalla
+    width: 100%; //para que cubra el ancho de toda la pantalla
+    text-align: center; //para alinear el texto en el centro (aplica para mensaje de exito only)
+}
+.mensaje{ //aplica para mensaje de error unicamente
+    float: left; //para posicionar el texto del mensaje a la izquierda
+    text-align: left; //para alinear el texto a la izquierda del container
+}
+
+.inner-parent{ //contenedor que tiene los labels y los select de las vistas de busqueda
+    text-align: center; //para alinear los elementos del container en el centro
+}
+
+.navbar-expand-sm .navbar-nav .dropdown-menu { //sobreescribiendo bootstrap
+    box-shadow: 2px 2px 20px #000; //agregandole sombra a los cuadros de menus del navbar
+    background-color: rgba(255,255,255,0.96); //modificando el color del box
+    margin-top: -0.4px; //para pegar el dropdown menu a la barra y evitar que el cursor no la reconozca
+}

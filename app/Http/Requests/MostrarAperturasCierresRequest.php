@@ -27,7 +27,14 @@ class MostrarAperturasCierresRequest extends FormRequest
             'Edificio' => 'nullable', //el campo Edificio no es requerido para la busqueda
             'Cuenta' => 'nullable', //el campo Cuenta no es requerido para la busqueda
             'Fecha_desde' => 'required', //el campo Fecha desde si es requerido
-            'Fecha_hasta' => 'required', //el campo Fecha hasta si es requerido
+            'Fecha_hasta' => 'required|after_or_equal:Fecha_desde', //el campo Fecha hasta si es requerido y la fecha tiene que ser despues de la 'fecha desde'
+        ];
+    }
+    public function messages(){
+        return [
+            'Fecha_desde.required' => 'El campo "Fecha desde" es requerido para realizar la busqueda.',
+            'Fecha_hasta.required' => 'El campo "Fecha hasta" es requerido para realizar la busqueda.',
+            'Fecha_hasta.after' => 'El campo "Fecha hasta" debe ser una fecha posterior al campo "Fecha desde".',
         ];
     }
 }

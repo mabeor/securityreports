@@ -1,30 +1,26 @@
 <tr>
 	<td>
-		<select  id="edificio" name="Edificio[]" required">
-			<option selected disabled value="seleccione el edificio">Seleccione</option>
-			<option value="TP1">TP1</option>
-			<option value="TP2">TP2</option>
-			<option value="TP3">TP3</option>
-			<option value="TP4">TP4</option>
-			<option value="TP5">TP5</option>
-			<option value="TP6">TP6</option>
-		</select>
-	</td>
-	<td>
-		<select  id="cuenta" name="Cuenta[]" required>
-			<option selected disabled value="seleccione la cuenta">Seleccione</option>
-			@foreach($campanas as $campana)
-				<option value="{{ $campana ->Nombre_cuenta }}">{{ $campana ->Nombre_cuenta }}</option>
+		<select id="edificio" name="Edificio[]" class="form-control form-control-sm" required>
+			<option selected disabled></option>
+			@foreach($edificios as $edificio)
+				<option value="{{ $edificio ->ID_edificio }}">{{ $edificio ->Nombre_edificio }}</option>
 			@endforeach
 		</select>
 	</td>
 	<td>
-		<input type="time" name="Hora[]" required>
+		<select  id="cuenta" name="Cuenta[]" class="form-control form-control-sm" required>
+			<option selected disabled></option>
+			@foreach($campanas as $campana)
+				<option value="{{ $campana ->ID_cuenta }}">{{ $campana ->Nombre_cuenta }}</option>
+			@endforeach
+		</select>
 	</td>
 	<td>
-		<input type="button" class="button" value="Agregar linea" onclick="agregarlinea(this);" />
+		<input type="datetime-local" id="Hora" name="Hora[]" class="form-control form-control-sm" required>
 	</td>
 	<td>
-		<input type="button" class="button" value="Borrar linea" onclick="borrarlinea();" />
+		<input type="button" class="btn btn-outline-primary btn-sm btn-js" value="Agregar linea" onclick="agregarlinea(this);" />
+		&nbsp;
+		<input type="button" class="btn btn-outline-primary btn-sm btn-js" value="Borrar linea" onclick="borrarlinea();" />
 	</td>
 </tr>
